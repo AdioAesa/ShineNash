@@ -1,6 +1,14 @@
-# ShineNash — Nashville cleaning company website
+# DustBusters (formerly ShineNash) — Nashville cleaning company website
 
-Single-file marketing site for "ShineNash" (house / Airbnb / commercial cleaning, Nashville TN).
+Single-file marketing site for "DustBusters" (house / Airbnb / commercial cleaning, Nashville TN).
+Renamed from ShineNash 2026-08-23; repo dir is still `~/shinenash`.
+
+## Brand / logo (2026-08-23)
+- Mascot: "a ghost doing the cleaning" — cute smiling ghost gripping a pink-handled mop, sparkles; inline SVG `#ghost` symbol in src/site.html (header + footer + favicon in build.py)
+- Standalone assets in `logo/`: `dustbusters-mark.svg` (canonical vector mark), `dustbusters-lockup.png` (mark + wordmark), `canva-ghost-A/B/C.png` (Canva AI alternates, editable in user's Canva account: DAHTHoWPsjY / DAHTHgFolEA / DAHTHg6W18E)
+- Wordmark: "Dust" ink + "Busters" blue, Baloo 2 700
+- CAUTION flagged to user: "DustBuster" is a Black & Decker trademark (handheld vacs) and the ghost concept evokes Ghostbusters — name is common among local cleaners but worth a check before signage/LLC filing
+- Placeholder email is now hello@dustbustersnashville.com (domain not registered)
 
 ## Layout
 - `src/site.html` — the ONLY file to edit (title + CSS + markup + JS, artifact/body format; `/*__FONTS__*/` placeholder)
@@ -10,11 +18,16 @@ Single-file marketing site for "ShineNash" (house / Airbnb / commercial cleaning
 - `build/fonts/` — `inline_fonts.py` downloads + base64-inlines Google Fonts latin subsets → `fonts_inline.css` (rerun only if changing fonts)
 - Published Artifact preview: https://claude.ai/code/artifact/1037c3e2-1548-4936-8231-963b3ae23cfc (republish `dist/artifact.html` to update same URL from the original conversation, or pass `url` from others)
 
-## Design system (v2 — 2026-08-09, replaced v1 cream/serif look at user's request: "be unique, bold, up to date")
-- Direction: bold DTC / neobrutalist-lite — electric cobalt `#2038EE` + acid lime `#D9F64F` on cool white `#F3F5FC`; 2px ink strokes, hard offset shadows (`4px 4px 0`), sticker cards with slight rotation, tilted scrolling marquee tape, spinning asterisk motif (`#sprk` symbol)
-- Fonts (embedded data URIs): Bricolage Grotesque variable (display, wght 800) + Instrument Sans variable (body)
-- Dual theme via CSS tokens: `@media (prefers-color-scheme: dark)` + `:root[data-theme=…]` overrides; dark = near-black navy `#080B18`, brighter cobalt, same lime
-- USER FEEDBACK: do NOT use the cream-paper + serif + gold/green "editorial" aesthetic — user explicitly rejected it as the recognizable AI default
+## Design system (v3 — 2026-08-23, modeled on www.musiccitymaidservice.com at user's request: "this is the look we would like to have, theme, colors, the logic")
+- Direction: playful/friendly maid-service look — bright cyan hero `#30CAEC` with floating CSS bubbles + SVG wave dividers; candy CTAs: pink `#EE046E` (primary/book), yellow `#FFDF00` w/ dark text (quote), green `#24D53C` (call/text); blue `#2097FC`/`#0170B9` accents; white sections + light-blue tint cards `#F0F8FC`; dotted-pattern stats band; sticky blue bottom CTA bar (call/text + Get a Quote + Book Online); buttons uppercase Poppins 600, 5px radius
+- Fonts (embedded data URIs): Baloo 2 variable 400–800 (rounded display, ProximaSoft stand-in) + Poppins 400/500/600/700 (body). `inline_fonts.py` now emits real per-face weights (was clamping to 400–700)
+- Dual theme via CSS tokens: `@media (prefers-color-scheme: dark)` + `:root[data-theme=…]` overrides; dark = deep navy `#0A1620`, same candy accents
+- Conversion logic (from MCMS): dual path everywhere — instant on-screen quote (#pricing calculator) AND "Book in 60 seconds" (#book); reference site's exact colors were extracted live from their CSS (they run Astra/WP + BookingKoala)
+- v2 (cobalt+lime neobrutalist) retired 8/23; v1 cream/serif remains banned
+
+## ZenMaid (booking backend — user will subscribe)
+- `#book` section renders a ZenMaid booking-form iframe when `ZENMAID_BOOKING_URL` (top of the `<script>` in src/site.html) is set; until then a fallback card shows (request-slot form + call/text)
+- Once the ZenMaid account exists: ZenMaid → Settings → Booking Forms → copy the embed/share link → paste into `ZENMAID_BOOKING_URL` → rebuild. Quote-form leads should also be pointed into ZenMaid (email lead intake or manual entry)
 
 ## Brand decisions (from Aug 2026 competitive research)
 - **Encore Guarantee** = free 24-hr re-clean (Nashville music tie-in; every top competitor has a named guarantee)

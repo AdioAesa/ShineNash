@@ -34,7 +34,7 @@ for url in order:
     faces.append(
         "@font-face{font-family:'%s';font-style:%s;font-weight:%d %d;font-display:swap;"
         "src:url(data:font/woff2;base64,%s) format('woff2');}"
-        % (f["fam"], f["style"], min(f["lo"], 400), max(f["hi"], 700), f["b64"])
+        % (f["fam"], f["style"], f["lo"], f["hi"], f["b64"])
     )
 
 out.write_text("\n".join(faces))

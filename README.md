@@ -29,7 +29,7 @@ Fonts are inlined as base64 data URIs; to change fonts, update the Google Fonts 
 
 ## Before launch
 
-- Replace placeholder phone `(615) 555-0199` and `hello@shinenova.com`
+- Replace placeholder phone `(615) 555-0199` and `hello@shinenova.net`
 - Replace aspirational stats/testimonials with real ones
 - Wire the booking form to a backend (currently demo-only)
 - Calibrate calculator pricing in the `quote()` function in `src/site.html`

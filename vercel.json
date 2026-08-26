@@ -3,13 +3,13 @@
     {
       "source": "/(.*)",
       "has": [{ "type": "host", "value": "shine-nash.vercel.app" }],
-      "destination": "https://www.shinenova.com/$1",
+      "destination": "https://www.shinenova.net/$1",
       "permanent": true
     },
     {
       "source": "/(.*)",
-      "has": [{ "type": "host", "value": "shinenova.com" }],
-      "destination": "https://www.shinenova.com/$1",
+      "has": [{ "type": "host", "value": "shinenova.net" }],
+      "destination": "https://www.shinenova.net/$1",
       "permanent": true
     }
   ]

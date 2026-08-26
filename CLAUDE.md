@@ -1,14 +1,13 @@
-# DustBusters (formerly ShineNash) — Nashville cleaning company website
+# ShineNova — Nashville cleaning company website
 
-Single-file marketing site for "DustBusters" (house / Airbnb / commercial cleaning, Nashville TN).
-Renamed from ShineNash 2026-08-23; repo dir is still `~/shinenash`.
+Single-file marketing site for "ShineNova" (house / Airbnb / commercial cleaning, Nashville TN).
+Naming history: ShineNash → DustBusters (8/23) → **ShineNova (final, 2026-08-26 — user bought www.shinenova.com on Namecheap)**. Repo dir is still `~/shinenash`; Vercel project is `shine-nash`, production domain www.shinenova.com.
 
-## Brand / logo (2026-08-23)
-- Mascot: "a ghost doing the cleaning" — cute smiling ghost gripping a pink-handled mop, sparkles; inline SVG `#ghost` symbol in src/site.html (header + footer + favicon in build.py)
-- Standalone assets in `logo/`: `dustbusters-mark.svg` (canonical vector mark), `dustbusters-lockup.png` (mark + wordmark), `canva-ghost-A/B/C.png` (Canva AI alternates, editable in user's Canva account: DAHTHoWPsjY / DAHTHgFolEA / DAHTHg6W18E)
-- Wordmark: "Dust" ink + "Busters" blue, Baloo 2 700
-- CAUTION flagged to user: "DustBuster" is a Black & Decker trademark (handheld vacs) and the ghost concept evokes Ghostbusters — name is common among local cleaners but worth a check before signage/LLC filing
-- Placeholder email is now hello@dustbustersnashville.com (domain not registered)
+## Brand / logo (2026-08-26)
+- Mascot: smiling nova star gripping a mop — yellow 4-point star (ink outline, blush cheeks) + blue-handled pink mop + cyan/blue sparkles; inline SVG `#nova` symbol in src/site.html (header + footer; favicon data-URI in build.py is a simplified smiling star)
+- Standalone asset: `logo/shinenova-mark.svg` (canonical vector mark). Old DustBusters ghost assets (`dustbusters-*.{svg,png}`, `canva-ghost-A/B/C.png`) kept in `logo/` for history only
+- Wordmark: "Shine" ink + "Nova" blue, Baloo 2 700
+- Email: hello@shinenova.com (domain owned; mailbox not yet set up — verify before launch)
 
 ## Layout
 - `src/site.html` — the ONLY file to edit (title + CSS + markup + JS, artifact/body format; `/*__FONTS__*/` placeholder)
@@ -37,7 +36,7 @@ Renamed from ShineNash 2026-08-23; repo dir is still `~/shinenash`.
 - Service areas = canonical set: East Nashville, Green Hills, Gulch, Germantown, 12 South… + Brentwood, Franklin, Hendersonville, Mt. Juliet, Murfreesboro
 
 ## Placeholders to replace before launch
-- Phone `(615) 555-0199`, email `hello@shinenash.com`
+- Phone `(615) 555-0199`; hello@shinenova.com mailbox must actually exist (set up email hosting on the Namecheap domain)
 - Stats (2,317 homes, 317 reviews, 4.9★) and all testimonials are ASPIRATIONAL COPY — must be made truthful before going live
 - Quote form is demo-only (client-side success state, submits nowhere) — wire to a backend/formspree/CRM
 - Calculator pricing model in `quote()`: base 95 + 24/bed + 22/bath + sqft adder; deep ×1.65, move ×1.95; airbnb 69+18/bed+14/bath; freq discounts 20/15/10%

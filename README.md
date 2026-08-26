@@ -1,6 +1,6 @@
-# ShineNash ✱
+# ShineNova ✦
 
-Marketing website for **ShineNash** — flat-rate house, Airbnb, and office cleaning in Nashville, TN.
+Marketing website for **ShineNova** — flat-rate house, Airbnb, and office cleaning in Nashville, TN.
 
 **Live preview:** the site is a single self-contained `index.html` (fonts embedded, no external requests) — open it locally or host it on any static host.
 
@@ -29,7 +29,7 @@ Fonts are inlined as base64 data URIs; to change fonts, update the Google Fonts 
 
 ## Before launch
 
-- Replace placeholder phone `(615) 555-0199` and `hello@shinenash.com`
+- Replace placeholder phone `(615) 555-0199` and `hello@shinenova.com`
 - Replace aspirational stats/testimonials with real ones
 - Wire the booking form to a backend (currently demo-only)
 - Calibrate calculator pricing in the `quote()` function in `src/site.html`

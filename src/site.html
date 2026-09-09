@@ -862,7 +862,7 @@ footer ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin-top:
         </div>
       </div>
     </div>
-    <p class="fine rv">Don't see your zip? Ask anyway — we say yes more often than not: <a href="mailto:hello@shinenova.net">hello@shinenova.net</a></p>
+    <p class="fine rv">Don't see your zip? Ask anyway — we say yes more often than not: <a href="mailto:hilal@shinenova.net">hilal@shinenova.net</a></p>
   </div>
 </section>
 
@@ -938,12 +938,16 @@ footer ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin-top:
       <p class="lede rv">Tell us about your place and we'll confirm your flat rate and first available slot — usually within the hour, always within the day.</p>
       <div class="c-points">
         <div class="c-point rv"><svg class="ic"><use href="#phone"/></svg><span><b>Call or text</b><small><a href="tel:+16155550199">(615) 555-0199</a> · Mon–Sat, 8am–6pm</small></span></div>
-        <div class="c-point rv"><svg class="ic"><use href="#check"/></svg><span><b>Email</b><small><a href="mailto:hello@shinenova.net">hello@shinenova.net</a></small></span></div>
+        <div class="c-point rv"><svg class="ic"><use href="#check"/></svg><span><b>Email</b><small><a href="mailto:hilal@shinenova.net">hilal@shinenova.net</a></small></span></div>
         <div class="c-point rv"><svg class="ic"><use href="#spark"/></svg><span><b>Fast first cleans</b><small>Most new clients are booked within 48 hours.</small></span></div>
       </div>
     </div>
     <div class="form rv" id="qform">
-      <form novalidate>
+      <form novalidate action="https://formsubmit.co/hilal@shinenova.net" method="POST">
+        <input type="hidden" name="_subject" value="New quote request — shinenova.net">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
         <div class="f-row">
           <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required placeholder="Loretta Lynn"></div>
           <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" autocomplete="tel" required placeholder="(615) 555-0123"></div>
@@ -1016,7 +1020,7 @@ footer ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin-top:
         <h4>Get In Touch</h4>
         <ul>
           <li><a href="tel:+16155550199">(615) 555-0199</a></li>
-          <li><a href="mailto:hello@shinenova.net">hello@shinenova.net</a></li>
+          <li><a href="mailto:hilal@shinenova.net">hilal@shinenova.net</a></li>
           <li>Mon–Sat · 8am–6pm CT</li>
           <li>Nashville, TN</li>
         </ul>
@@ -1121,8 +1125,10 @@ $('q-book').addEventListener('click', () => {
   if (sel.selectedIndex < 0) sel.selectedIndex = 0;
 });
 
-/* ---------- form (demo submit — leads will flow into ZenMaid once live) ---------- */
-document.querySelector('#qform form').addEventListener('submit', e => {
+/* ---------- form → emails hilal@shinenova.net via FormSubmit.co (AJAX, mailto fallback) ---------- */
+const LEAD_EMAIL = 'hilal@shinenova.net';
+const qf = document.querySelector('#qform form');
+qf.addEventListener('submit', async e => {
   e.preventDefault();
   const need = ['f-name','f-phone','f-email','f-zip'];
   let ok = true;
@@ -1131,6 +1137,21 @@ document.querySelector('#qform form').addEventListener('submit', e => {
     el.style.borderColor = bad ? '#E03131' : 'var(--tint2)';
     if (bad) ok = false;
   });
-  if (ok) $('qform').classList.add('sent');
+  if (!ok) return;
+  const btn = qf.querySelector('button[type=submit]');
+  btn.disabled = true; btn.textContent = 'Sending…';
+  const fd = new FormData(qf);
+  fd.set('_replyto', $('f-email').value.trim());
+  fd.set('page', location.href);
+  try {
+    const r = await fetch('https://formsubmit.co/ajax/' + LEAD_EMAIL, {method:'POST', headers:{'Accept':'application/json'}, body:fd});
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    $('qform').classList.add('sent');
+  } catch (err) {
+    /* relay unreachable → open the visitor's mail app pre-filled to the same inbox */
+    const lines = ['name','phone','email','zip','service','message'].map(k => `${k}: ${fd.get(k) || ''}`).join('\n');
+    location.href = `mailto:${LEAD_EMAIL}?subject=${encodeURIComponent('Quote request — shinenova.net')}&body=${encodeURIComponent(lines)}`;
+    btn.disabled = false; btn.textContent = 'Get my free quote';
+  }
 });
 </script>

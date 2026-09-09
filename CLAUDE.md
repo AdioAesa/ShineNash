@@ -7,7 +7,7 @@ Naming history: ShineNash → DustBusters (8/23) → **ShineNova (final, 2026-08
 - Mascot: smiling nova star gripping a mop — yellow 4-point star (ink outline, blush cheeks) + blue-handled pink mop + cyan/blue sparkles; inline SVG `#nova` symbol in src/site.html (header + footer; favicon data-URI in build.py is a simplified smiling star)
 - Standalone asset: `logo/shinenova-mark.svg` (canonical vector mark). Old DustBusters ghost assets (`dustbusters-*.{svg,png}`, `canva-ghost-A/B/C.png`) kept in `logo/` for history only
 - Wordmark: "Shine" ink + "Nova" blue, Baloo 2 700
-- Email: hello@shinenova.net (domain owned; mailbox not yet set up — verify before launch)
+- Email: **hilal@shinenova.net** (live mailbox, 2026-09-09) — all mailto links + quote-form leads go here
 
 ## Layout
 - `src/site.html` — the ONLY file to edit (title + CSS + markup + JS, artifact/body format; `/*__FONTS__*/` placeholder)
@@ -36,7 +36,7 @@ Naming history: ShineNash → DustBusters (8/23) → **ShineNova (final, 2026-08
 - Service areas = canonical set: East Nashville, Green Hills, Gulch, Germantown, 12 South… + Brentwood, Franklin, Hendersonville, Mt. Juliet, Murfreesboro
 
 ## Placeholders to replace before launch
-- Phone `(615) 555-0199`; hello@shinenova.net mailbox must actually exist (set up email hosting on the Namecheap domain)
+- Phone `(615) 555-0199`
 - Stats (2,317 homes, 317 reviews, 4.9★) and all testimonials are ASPIRATIONAL COPY — must be made truthful before going live
-- Quote form is demo-only (client-side success state, submits nowhere) — wire to a backend/formspree/CRM
+- Quote form POSTs to FormSubmit.co (`https://formsubmit.co/ajax/hilal@shinenova.net`, no key; honeypot `_honey`, `_captcha=false`, table template; mailto fallback on fetch failure). FormSubmit requires ONE-TIME activation: first submission emails an "Activate form" link to the inbox — click it or nothing arrives
 - Calculator pricing model in `quote()`: base 95 + 24/bed + 22/bath + sqft adder; deep ×1.65, move ×1.95; airbnb 69+18/bed+14/bath; freq discounts 20/15/10%

@@ -38,5 +38,5 @@ Naming history: ShineNash → DustBusters (8/23) → **ShineNova (final, 2026-08
 ## Placeholders to replace before launch
 - Phone `(615) 555-0199`
 - Stats (2,317 homes, 317 reviews, 4.9★) and all testimonials are ASPIRATIONAL COPY — must be made truthful before going live
-- Quote form POSTs to FormSubmit.co (`https://formsubmit.co/ajax/hilal@shinenova.net`, no key; honeypot `_honey`, `_captcha=false`, table template; mailto fallback on fetch failure). FormSubmit requires ONE-TIME activation: first submission emails an "Activate form" link to the inbox — click it or nothing arrives
+- Quote form POSTs to FormSubmit.co (`https://formsubmit.co/ajax/hilal@shinenova.net`, JSON body — multipart/FormData gets mangled by their parser; no key; honeypot `_honey`, `_captcha=false`, table template; mailto fallback on fetch failure). FormSubmit requires ONE-TIME activation: first submission emails an "Activate form" link to the inbox — click it or nothing arrives
 - Calculator pricing model in `quote()`: base 95 + 24/bed + 22/bath + sqft adder; deep ×1.65, move ×1.95; airbnb 69+18/bed+14/bath; freq discounts 20/15/10%

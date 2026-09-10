@@ -1,6 +1,6 @@
 # ShineNova — Nashville cleaning company website
 
-Single-file marketing site for "ShineNova" (house / Airbnb / commercial cleaning, Nashville TN).
+Single-file marketing site for "ShineNova" (RESIDENTIAL house cleaning only, Nashville TN — Airbnb/STR + commercial removed 2026-09-10; may return later).
 Naming history: ShineNash → DustBusters (8/23) → **ShineNova (final, 2026-08-26 — user bought www.shinenova.net on Namecheap)**. Repo dir is still `~/shinenash`; Vercel project is `shine-nash`, production domain www.shinenova.net.
 
 ## Brand / logo (2026-08-26)
@@ -31,12 +31,12 @@ Naming history: ShineNash → DustBusters (8/23) → **ShineNova (final, 2026-08
 ## Brand decisions (from Aug 2026 competitive research)
 - **Encore Guarantee** = free 24-hr re-clean (Nashville music tie-in; every top competitor has a named guarantee)
 - **Transparent flat-rate pricing + on-screen instant quote calculator** — main differentiator; most Nashville competitors hide prices
-- **"Your home is not a gig"** enemy positioning vs gig apps (W-2, same-trio crew, $2M insured)
-- **55-Point Shine List** checklist (transparency artifact), Airbnb/STR turnovers flagged as Nashville specialty
+- **"Your home is not a gig"** enemy positioning vs gig apps (same-crew, background-checked). **No insurance/bonding and no W-2 claims anywhere** — company has no insurance at launch (user, 2026-09-10); do not re-add
+- **55-Point Shine List** checklist (transparency artifact)
 - Service areas = canonical set: East Nashville, Green Hills, Gulch, Germantown, 12 South… + Brentwood, Franklin, Hendersonville, Mt. Juliet, Murfreesboro
 
 ## Placeholders to replace before launch
 - ~~Phone~~ — real number (615) 290-1866 set 2026-09-09
 - Stats (2,317 homes, 317 reviews, 4.9★) and all testimonials are ASPIRATIONAL COPY — must be made truthful before going live
 - Quote form POSTs to FormSubmit.co (`https://formsubmit.co/ajax/hilal@shinenova.net`, JSON body — multipart/FormData gets mangled by their parser; no key; honeypot `_honey`, `_captcha=false`, table template; mailto fallback on fetch failure). FormSubmit requires ONE-TIME activation: first submission emails an "Activate form" link to the inbox — click it or nothing arrives
-- Calculator pricing model in `quote()`: base 95 + 24/bed + 22/bath + sqft adder; deep ×1.65, move ×1.95; airbnb 69+18/bed+14/bath; freq discounts 20/15/10%
+- Calculator pricing model in `quote()`: base 95 + 24/bed + 22/bath + sqft adder; deep ×1.65, move ×1.95; freq discounts 20/15/10% (airbnb branch removed 9/10)

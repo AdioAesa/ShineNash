@@ -1,42 +1,32 @@
-# ShineNova — Nashville cleaning company website
+# ShineNova — Nashville house-cleaning website
 
-Single-file marketing site for "ShineNova" (RESIDENTIAL house cleaning only, Nashville TN — Airbnb/STR + commercial removed 2026-09-10; may return later).
-Naming history: ShineNash → DustBusters (8/23) → **ShineNova (final, 2026-08-26 — user bought www.shinenova.net on Namecheap)**. Repo dir is still `~/shinenash`; Vercel project is `shine-nash`, production domain www.shinenova.net.
+Static six-page site (plain HTML/CSS/JS, no build step). RESIDENTIAL house cleaning only, Nashville TN.
+Repo dir is still `~/shinenash` (GitHub AdioAesa/ShineNash); Vercel project `shine-nash`; production domain www.shinenova.net.
+Naming history: ShineNash → DustBusters (8/23) → **ShineNova (final, 2026-08-26)**.
 
-## Brand / logo (2026-08-26)
-- Mascot: smiling nova star gripping a mop — yellow 4-point star (ink outline, blush cheeks) + blue-handled pink mop + cyan/blue sparkles; inline SVG `#nova` symbol in src/site.html (header + footer; favicon data-URI in build.py is a simplified smiling star)
-- Standalone asset: `logo/shinenova-mark.svg` (canonical vector mark). Old DustBusters ghost assets (`dustbusters-*.{svg,png}`, `canva-ghost-A/B/C.png`) kept in `logo/` for history only
-- Wordmark: "Shine" ink + "Nova" blue, Baloo 2 700
-- Email: **hilal@shinenova.net** (live mailbox, 2026-09-09) — all mailto links + quote-form leads go here
+## 2026-10-11 — site replaced wholesale with Hilal's launch build
+- Source: https://github.com/hilalgoc2-beep/shinenova-website (commit f2e2c84, "ShineNova website, ready for launch"), added here as git remote `hilal`. Local clone at `~/shinenova-website`; browsable copy at `C:\Users\ademirci\claude-work\shinenova-website\`.
+- User instruction: "make it exactly the same, 100%" — tree is byte-identical to hilal/main except `vercel.json`, `CLAUDE.md`, `.gitignore`.
+- Vercel is connected to the GitHub repo: **a push to `main` auto-deploys production** (no `vercel deploy` needed; the CLI deploy is blocked by the permission classifier anyway).
+- Previous single-file build (src/site.html + build/build.py, candy cyan/pink design, ZenMaid hook, quote calculator) is gone — see git history before 13223fc if it's ever needed.
 
-## Layout
-- `src/site.html` — the ONLY file to edit (title + CSS + markup + JS, artifact/body format; `/*__FONTS__*/` placeholder)
-- `build/build.py` — assembles deliverables. Run after every edit: `python3 build/build.py`
-  - `index.html` — full standalone document (fonts inlined, ~240KB, fully portable)
-  - `dist/artifact.html` — Artifact-publish format (no doctype/head wrapper)
-- `build/fonts/` — `inline_fonts.py` downloads + base64-inlines Google Fonts latin subsets → `fonts_inline.css` (rerun only if changing fonts)
-- Published Artifact preview: https://claude.ai/code/artifact/1037c3e2-1548-4936-8231-963b3ae23cfc (republish `dist/artifact.html` to update same URL from the original conversation, or pass `url` from others)
+## Pages / layout
+index.html · services.html · about.html · areas.html · faq.html · contact.html · `css/style.css` · `js/main.js` · `assets/` (logo.svg, mark.svg, favicon.svg) · `images/` (AI-generated 1600px JPEGs) · `video/hero-1080.mp4` + `hero-720.mp4` (plays once messy→clean; `hero-before/after.jpg` frames).
+`images/svc-*.jpg`, `images/room-*.jpg`, `assets/logo-light.svg` belong to a rejected redesign and are unused.
 
-## Design system (v3 — 2026-08-23, modeled on www.musiccitymaidservice.com at user's request: "this is the look we would like to have, theme, colors, the logic")
-- Direction: playful/friendly maid-service look — bright cyan hero `#30CAEC` with floating CSS bubbles + SVG wave dividers; candy CTAs: pink `#EE046E` (primary/book), yellow `#FFDF00` w/ dark text (quote), green `#24D53C` (call/text); blue `#2097FC`/`#0170B9` accents; white sections + light-blue tint cards `#F0F8FC`; dotted-pattern stats band; sticky blue bottom CTA bar (call/text + Get a Quote + Book Online); buttons uppercase Poppins 600, 5px radius
-- Fonts (embedded data URIs): Baloo 2 variable 400–800 (rounded display, ProximaSoft stand-in) + Poppins 400/500/600/700 (body). `inline_fonts.py` now emits real per-face weights (was clamping to 400–700)
-- Dual theme via CSS tokens: `@media (prefers-color-scheme: dark)` + `:root[data-theme=…]` overrides; dark = deep navy `#0A1620`, same candy accents
-- Conversion logic (from MCMS): dual path everywhere — instant on-screen quote (#pricing calculator) AND "Book in 60 seconds" (#book); reference site's exact colors were extracted live from their CSS (they run Astra/WP + BookingKoala)
-- v2 (cobalt+lime neobrutalist) retired 8/23; v1 cream/serif remains banned
+## Brand (Hilal's)
+- Colors: turquoise `#18B3AB`, dusty pink `#E4AEB3`, sage `#7EA98B`, ink `#173331`, mint `#F3FAF8`
+- Fonts (Google Fonts CDN): Bricolage Grotesque (headlines), Instrument Sans (body)
 
-## ZenMaid (booking backend — user will subscribe)
-- `#book` section renders a ZenMaid booking-form iframe when `ZENMAID_BOOKING_URL` (top of the `<script>` in src/site.html) is set; until then a fallback card shows (request-slot form + call/text)
-- Once the ZenMaid account exists: ZenMaid → Settings → Booking Forms → copy the embed/share link → paste into `ZENMAID_BOOKING_URL` → rebuild. Quote-form leads should also be pointed into ZenMaid (email lead intake or manual entry)
+## Contact / forms
+- Phone (615) 290-1866 · email **info@shinenova.net** · Mon–Fri 8am–5pm (search all .html to change; previous site used hilal@shinenova.net)
+- Lead forms → Web3Forms (hidden `access_key` input in index.html + contact.html), delivered to info@shinenova.net
 
-## Brand decisions (from Aug 2026 competitive research)
-- **Encore Guarantee** = free 24-hr re-clean (Nashville music tie-in; every top competitor has a named guarantee)
-- **Transparent flat-rate pricing + on-screen instant quote calculator** — main differentiator; most Nashville competitors hide prices
-- **"Your home is not a gig"** enemy positioning vs gig apps (same-crew, background-checked). **No insurance/bonding and no W-2 claims anywhere** — company has no insurance at launch (user, 2026-09-10); do not re-add
-- **55-Point Shine List** checklist (transparency artifact)
-- Service areas = canonical set: East Nashville, Green Hills, Gulch, Germantown, 12 South… + Brentwood, Franklin, Hendersonville, Mt. Juliet, Murfreesboro
+## Known content notes
+- Copy claims "insured & bonded" and "W-2 employees" (index, about, faq). The earlier rule was NO insurance/W-2 claims (no insurance at launch, 2026-09-10). User chose to ship Hilal's copy verbatim on 2026-10-11 — flag again if asked to edit.
+- FAQ says no Airbnbs/offices "yet" — consistent with residential-only.
+- Still placeholder per README: founder story in about.html, prices "From $149/$249/$349", reviews + social + privacy/terms links hidden until real.
 
-## Placeholders to replace before launch
-- ~~Phone~~ — real number (615) 290-1866 set 2026-09-09
-- Stats (2,317 homes, 317 reviews, 4.9★) and all testimonials are ASPIRATIONAL COPY — must be made truthful before going live
-- Quote form POSTs to FormSubmit.co (`https://formsubmit.co/ajax/hilal@shinenova.net`, JSON body — multipart/FormData gets mangled by their parser; no key; honeypot `_honey`, `_captcha=false`, table template; mailto fallback on fetch failure). FormSubmit requires ONE-TIME activation: first submission emails an "Activate form" link to the inbox — click it or nothing arrives
-- Calculator pricing model in `quote()`: base 95 + 24/bed + 22/bath + sqft adder; deep ×1.65, move ×1.95; freq discounts 20/15/10% (airbnb branch removed 9/10)
+## Hosting
+- `vercel.json` only holds redirects: shine-nash.vercel.app and apex shinenova.net → https://www.shinenova.net
+- `.vercel/` (local link) and `.env.local` are git-ignored
